@@ -2,52 +2,90 @@ ascii = "=,.....................................................................
 console.log(ascii);
 // define all of our songs/lyrics
 var buttons = ["oh yeah", "one more time", "around the world", "harder", "better", "faster", "stronger", "make love", "give life back to music", "get lucky", "lose yourself to dance", "doin' it right", "human after all", "robot rock"]
-var albums = {
-		"homework": {
-			"around the world": ["around the world"]
-		},
-		"discovery": {
-			"harder better faster stronger": ["harder", "better", "faster", "stronger"],
-			"one more time": ["one more time", "we're gonna celebrate", "oh yeah", "all right", "don't stop the dancing"]
-		},
-		"human after all": {
-			"technologic": ["Buy it", "use it", "break it", "fix it", "Trash it", "change it", "mail", "upgrade it", "Charge it", "point it", "zoom it", "press it", "Snap it", "work it", "quick", "erase it", "Write it", "cut it", "paste it", "save it", "Load it", "check it", "quick", "rewrite it", "Plug it", "play it", "burn it", "rip it", "Drag and drop it", "zip", "unzip it", "Lock it", "fill it", "curl it", "find it", "View it", "code it", "jam", "unlock it", "Surf it", "scroll it", "pose it", "click it", "Cross it", "crack it", "twitch", "update it", "Name it", "read it", "tune it", "print it", "Scan it", "send it", "fax", "rename it", "Touch it", "bring it", "pay it", "watch it", "Turn it", "leave it", "stop", "format it"]
-		},
-		"random access memories": {}
-	}
-	// define our paragraph length
-PARA_LENGTH = 500;
+
+lyrics = [
+	"Da funk back to the punk, c'mon.",
+	"Around the world, around the world."
+
+	// discovery lyrics
+	"one more time, we're gonna celebrate",
+	"oh yeah, all right, don't stop the dancing",
+	"work it. Do it. "
+	"harder better faster stronger",
+
+	// human after all songs
+
+	"Technologic. Technologic. Technologic. Technologic.",
+	"buy it use it break it fix it",
+	"trash it change it mail upgrade it",
+	// "charge it point it zoom it press it",
+	// "snap it work it quick erase it",
+	// "plug it play it burn it rip it",
+	// "drag and drop it zip unzip it",
+	// "lock it fill it curl it find it",
+	// "view it code it jam unlock it",
+	// "surf it, scroll it, pause it, click it",
+	// "cross it, crack it, switch update it",
+	// "name it, read it, tune it, print it",
+	// "scan it, send it, fax rename it",
+	// "touch it, bring it, pay it, watch it",
+	// "turn it, leave it, start format it",
+	"lose yourself to dance",
+	"come on come on come on come on come on, come on come on come on come on come on",
+	"robot rock",
+	"rollin' and scratchin'",
+	"face to face"
+]
+
+	// define our paragraph length, in words
+PARA_WORD_LENGTH = 150;
 $(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
 var generate = function() {
-		$(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
-		var paragraphCount = parseInt($(".paragraphInput").val())
-			// if paragraphInput does not contain a number
-			// , don't do anything.
-		if (typeof paragraphCount != "number") {
-			return;
-		}
-		// if paragraphInput is greater than 100, set it to 100
-		if (paragraphCount > 100) {
-			paragraphCount = 100;
-		}
-		// create the paragraphs for our ipsum
-		ipsum = []
-		for (var i = 0; i < paragraphCount; i++) {
-			// pick a song from an album to use as the lorem ipsum:
-			var album = albums[Object.keys(albums)[Math.floor(Math.random() * Object.keys(albums).length)]]
-			var song = album[Object.keys(album)[Math.floor(Math.random() * Object.keys(album).length)]]
-				// console.log(song);
-			ipsum[i] = ""
-			while (ipsum[i].length < PARA_LENGTH) {
-				ipsum[i] = ipsum[i].concat(song[Math.floor(Math.random() * song.length)] + " ")
-			}
-		}
-		$(".ipsum").html("")
-		for (var i = 0; i < ipsum.length; i++) {
-			$(".ipsum").append($('<p></p>').text(ipsum[i]))
-		}
+	$(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
+	var paragraphCount = parseInt($(".paragraphInput").val())
+		// if paragraphInput does not contain a number
+		// , don't do anything.
+	if (typeof paragraphCount != "number") {
+		return;
 	}
-	// takes in a particular song with lyrics, returns an array of randomly selected lyrics
-selectLyricsForParagraph = function(arrayOfSongLyrics) {}
-	// takes in an array of randomly selected lyrics, returns a string of the lyrics with capitalization and punctuation
-assembleParagraph = function(arrayOfSelectedLyrics) {}
+	// if paragraphInput is greater than 100, set it to 100
+	if (paragraphCount > 100) {
+		paragraphCount = 100;
+	}
+	// create the paragraphs for our ipsum
+	ipsum = []
+	for (var i = 0; i < paragraphCount; i++) {
+		// pick a song from an album to use as the lorem ipsum:
+		// var album = albums[Object.keys(albums)[Math.floor(Math.random() * Object.keys(albums).length)]]
+		// var song = album[Object.keys(album)[Math.floor(Math.random() * Object.keys(album).length)]]
+		ipsum[i] = generateParagraph(lyrics)
+	}
+	$(".ipsum").html("")
+	for (var i = 0; i < ipsum.length; i++) {
+		$(".ipsum").append($('<p></p>').text(ipsum[i]))
+	}
+}
+var generateParagraph = function(lyrics) {
+	// avg paragraph length is 150 words - always have to check and see if the latest total is more or less than that
+	var newParagraphLyrics = [];
+	// while we have a word count of less than PARA_WORD_LENGTH
+	while (newParagraphLyrics.join(" ").split(" ").length < PARA_WORD_LENGTH) {
+		newParagraphLyrics = newParagraphLyrics.concat(lyrics[Math.floor(Math.random() * lyrics.length)])
+	}
+	// create our new paragraph string
+	newParagraphString = ""
+	newParagraphString = newParagraphString + newParagraphLyrics[0][0].toUpperCase() + newParagraphLyrics[0].slice(1)
+	for (var i = 1; i < newParagraphLyrics.length; i++) {
+		rand = Math.random()
+		if (rand <= 0.5) {
+			newParagraphString = newParagraphString + " " + newParagraphLyrics[i]
+		} else if (rand <= 0.75) {
+			newParagraphString = newParagraphString + ", " + newParagraphLyrics[i].toLowerCase()
+		} else {
+			newParagraphString = newParagraphString + ". " + newParagraphLyrics[i][0].toUpperCase() + newParagraphLyrics[i].slice(1)
+		}
+		// newParagraphLyrics[i]
+	}
+	newParagraphString = newParagraphString.concat(".")
+	return newParagraphString
+}
