@@ -5,12 +5,11 @@ var buttons = ["oh yeah", "one more time", "around the world", "harder", "better
 
 lyrics = [
 	"Da funk back to the punk, c'mon.",
-	"Around the world, around the world."
+	"Around the world, around the world.",
 
 	// discovery lyrics
 	"one more time, we're gonna celebrate",
 	"oh yeah, all right, don't stop the dancing",
-	"work it. Do it. "
 	"harder better faster stronger",
 
 	// human after all songs
