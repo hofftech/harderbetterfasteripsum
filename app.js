@@ -6,12 +6,10 @@ var buttons = ["oh yeah", "one more time", "around the world", "harder", "better
 lyrics = [
 	"Da funk back to the punk, c'mon.",
 	"Around the world, around the world.",
-
 	// discovery lyrics
 	"one more time, we're gonna celebrate",
 	"oh yeah, all right, don't stop the dancing",
 	"harder better faster stronger",
-
 	// human after all songs
 	"Technologic. Technologic. Technologic. Technologic.",
 	"buy it use it break it fix it",
@@ -35,7 +33,10 @@ lyrics = [
 	"face to face"
 ]
 
-	// define our paragraph length, in words
+
+
+
+// define our paragraph length, in words
 PARA_WORD_LENGTH = 150;
 $(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
 var generate = function() {
@@ -87,3 +88,13 @@ var generateParagraph = function(lyrics) {
 	newParagraphString = newParagraphString.concat(".")
 	return newParagraphString
 }
+
+
+aroundTheWorld = ["around the world"]
+harderBetterFasterStronger = ["harder", "better", "faster", "stronger"]
+oneMoreTime = ["one more time", "we're gonna celebrate", "oh yeah, all right", "don't stop the dancing"]
+
+
+console.log(generateParagraph(aroundTheWorld));
+console.log(generateParagraph(harderBetterFasterStronger));
+console.log(generateParagraph(oneMoreTime));
