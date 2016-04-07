@@ -13,7 +13,6 @@ lyrics = [
 	"harder better faster stronger",
 
 	// human after all songs
-
 	"Technologic. Technologic. Technologic. Technologic.",
 	"buy it use it break it fix it",
 	"trash it change it mail upgrade it",
