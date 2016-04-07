@@ -2,7 +2,7 @@
 
 <!--
 
-					artisinal code by https://hoff.tech
+					artisanal code by https://hoff.tech
 
 =,..............................................................................
 =,..............................................................................
@@ -61,44 +61,48 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>Harder Better Faster Ipsum</title>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-	<h1>Harder Better Faster Ipsum</h1>
-	<h3>A Daft Punk Ipsum generator</h3>
-	<div class="checkboxes">
-		<p>
-			<label>
-				<input type="checkbox" name="songs" checked="true"> Songs/Albums
-			</label>
-		</p>
-		<p>
-			<label>
-				<input type="checkbox" name="technologic"> Technologic
-			</label>
-		</p>
-		<p>
-			<label>
-				<input type="checkbox" name="harderBetterFasterStronger"> Harder Better Faster Stronger
-			</label>
-		</p>
-		<p>
-			<label>
-				<input type="checkbox" name="aroundTheWorld"> Around the World
-			</label>
-		</p>
-	</div>
-	<div class="paragraphs">
-		<label>Paragraphs:</label>
-		<input class="paragraphInput" type="number" value="4" />
-		<button onclick="generate()" class="generateButton">OH YEAH</button>
-	</div>
-	<div class="ipsum">
-	</div>
-	<div id="pageBottom">
-
+	<div class="container">
+		<div class="hero">
+			<a class="hofftech-logo" href="https://hoff.tech">
+				HOFFTECH
+			</a>
+			<h1>HARDER BETTER FASTER IPSUM</h1>
+		</div>
+		<div class="generator">
+			<div class="checkboxes">
+				<p>
+					<label>
+						<input type="checkbox" name="songs" checked="true" onclick="regenerate()"> Song/Album Titles
+					</label>
+				</p>
+				<p>
+					<label>
+						<input type="checkbox" name="technologic" onclick="regenerate()"> Technologic
+					</label>
+				</p>
+				<p>
+					<label>
+						<input type="checkbox" name="harderBetterFasterStronger" onclick="regenerate()"> Harder Better Faster Stronger
+					</label>
+				</p>
+				<p>
+					<label>
+						<input type="checkbox" name="aroundTheWorld" onclick="regenerate()"> Around the World
+					</label>
+				</p>
+			</div>
+			<div class="ipsum">
+			</div>
+		</div>
 	</div>
 	<script src="/app.js" charset="utf-8"></script>
 </body>

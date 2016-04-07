@@ -1,5 +1,3 @@
-console.log(document.getElementById('pageBottom').scrollTop);
-
 // define all of our songs/lyrics
 songs = [
 	// albums
@@ -23,42 +21,23 @@ allWords = {
 		"technologic": technologic
 	}
 	// define our paragraph length, in words
-PARA_WORD_LENGTH = 100;
-// $(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
-var generate = function() {
-	// $(".generateButton").text(buttons[Math.floor(Math.random() * buttons.length)])
-	var paragraphCount = parseInt($(".paragraphInput").val())
-		// if paragraphInput does not contain a number
-		// , don't do anything.
-	if (typeof paragraphCount != "number") {
-		return;
-	}
-	// if paragraphInput is greater than 100, set it to 100
-	if (paragraphCount > 100) {
-		paragraphCount = 100;
-	}
-	// create the paragraphs for our ipsum
-	ipsum = []
-		// get values of checkboxes
+PARA_WORD_LENGTH = 50;
+var generatorElement = document.getElementsByClassName('generator')[0];
+var addNewParagraph = function() {
+	// inefficient crap. whatever, gets the job done. if you're looking for an *efficient* daft punk lorem ipsum generator, you won't find it here!
 	validKeys = []
 	$("input:checkbox").each(function(index, element) {
 		if (element.checked) {
 			validKeys.push(element.name)
 		}
 	})
-	filteredAllWords = {}
-	for (key of validKeys) {
-		filteredAllWords[key] = allWords[key]
-	}
-	for (var i = 0; i < paragraphCount; i++) {
-		// pick a set of words to use as the lorem ipsum:
+	if (validKeys.length != 0) {
+		filteredAllWords = {}
+		for (key of validKeys) {
+			filteredAllWords[key] = allWords[key]
+		}
 		var words = filteredAllWords[Object.keys(filteredAllWords)[Math.floor(Math.random() * Object.keys(filteredAllWords).length)]]
-		ipsum[i] = generateParagraph(words)
-	}
-	// clear existing ipsum text
-	$(".ipsum").html("")
-	for (var i = 0; i < ipsum.length; i++) {
-		$(".ipsum").append($('<p></p>').text(ipsum[i]))
+		$(".ipsum").append($('<p></p>').text(generateParagraph(words)))
 	}
 }
 var generateParagraph = function(lyrics) {
@@ -84,4 +63,43 @@ var generateParagraph = function(lyrics) {
 	}
 	newParagraphString = newParagraphString.concat(".")
 	return newParagraphString
+}
+regenerate = function() {
+		$(".ipsum").html("");
+		validKeys = []
+		$("input:checkbox").each(function(index, element) {
+			if (element.checked) {
+				validKeys.push(element.name)
+			}
+		})
+		if (validKeys.length != 0) {
+			if (window.innerWidth < 768) {
+				while ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+					addNewParagraph();
+				}
+			} else {
+				while (generatorElement.scrollHeight - generatorElement.scrollTop <= generatorElement.clientHeight) {
+					addNewParagraph()
+				}
+			}
+		} else {
+			$(".ipsum").html("&#x1f916;");
+		}
+	}
+	// generate a bunch of paragraphs to begin with
+	regenerate();
+	// generate more paragraphs on scroll
+generatorElement.onscroll = function(ev) {
+	// height of visible element + how far the visible element is scrolled >= total height of the element
+	if (generatorElement.scrollHeight - generatorElement.scrollTop <= generatorElement.clientHeight) {
+		addNewParagraph()
+	}
+};
+window.onscroll = function(ev) {
+	if (window.innerWidth < 768) {
+		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			// you're at the bottom of the page
+			addNewParagraph()
+		}
+	}
 }

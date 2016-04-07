@@ -1,0 +1,75 @@
+html, body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+}
+h1 {
+    text-align: center;
+    color: white;
+    border-top: white solid 5px;
+    border-bottom: white solid 5px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    max-width: 450px;
+    width: 100%;
+    padding: 8px;
+}
+.hero {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 45%, transparent), url("/daftpunk.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hofftech-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 3vmin;
+    padding: 10px;
+    margin-left: auto;
+    color: inherit;
+    text-decoration: inherit;
+}
+.generator {
+    display: flex;
+    flex-direction: column;
+}
+.checkboxes {
+    margin: auto;
+}
+.ipsum {
+    margin: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: 450px;
+    text-align: justify;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/*larger screens*/
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+		justify-content: center;
+    }
+    .hero {
+        order: 1;
+        height: 100vh;
+		width: 100%;
+    }
+    .generator {
+		height: 100vh;
+        order: 2;
+		overflow: scroll;
+    }
+	.hofftech-logo {
+		margin-left: 0px;
+		margin-right: auto;
+	}
+}
