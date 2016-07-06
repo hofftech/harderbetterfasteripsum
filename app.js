@@ -3,7 +3,7 @@ songs = [
 	// albums
 	"homework", "discovery", "human after all", "random access memories",
 	// homework
-	"daftendirekt", "WDPK 83.7 FM", "revolution 909", "da funk", "phœnix", "fresh", "around the world", "rollin' & scratchin'", "teachers", "high fidelity", "rock'n roll", "oh yeah", "burnin'", "indo silver club", "alive", "funk",
+	"daftendirekt", "WDPK 83.7 FM", "revolution 909", "da funk", "phœnix", "fresh", "around the world", "rollin' and scratchin'", "teachers", "high fidelity", "rock'n roll", "oh yeah", "burnin'", "indo silver club", "alive", "funk",
 	// discovery
 	"one more time", "aerodynamic", "digital love", "harder, better, faster, stronger", "crescendolls", "nightvision", "superheroes", "high life", "something about us", "voyager", "veridis quo", "short circuit", "face to face", "too long",
 	// human after all
